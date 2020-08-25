@@ -4,7 +4,7 @@ parameters:
 
 steps:
 - script: |
-    ls -a $(Build.SourcesDirectory)/dist
+    ls -a $(Build.SourcesDirectory)
 - task: CopyFiles@2
   displayName: 'Copy distribution'
   inputs:
