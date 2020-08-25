@@ -3,6 +3,8 @@ parameters:
   folder: $(Build.SourcesDirectory)/dist
 
 steps:
+- script: |
+    ls -a $(Build.SourcesDirectory)/dist
 - task: CopyFiles@2
   displayName: 'Copy distribution'
   inputs:
