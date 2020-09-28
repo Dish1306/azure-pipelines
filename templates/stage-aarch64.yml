@@ -1,7 +1,6 @@
 stages:
 - stage: azure_linux_test
   displayName: 'test-aarch64'
-
   jobs:
   - job:
     strategy:
@@ -47,3 +46,4 @@ stages:
         DOCKER_MULTIDICT_ROOT: "/home/multidict_root"
         HOST_USER_ID: $(id -u)
         PYTHON: "python$(python.version)"
+  
