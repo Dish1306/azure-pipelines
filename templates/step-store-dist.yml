@@ -3,15 +3,6 @@ parameters:
   folder: $(Build.SourcesDirectory)/dist
 
 steps:
-- script: |
-    ls -a $(Build.SourcesDirectory)/.build-venv/bin
-  displayName: 'list build-venv bin'
-- script: |
-    ls -a ${{ parameters.folder }}
-  displayName: 'list parameter.folder'
-- script: |
-    ls -a $(Build.ArtifactStagingDirectory)
-  displayName: 'list artifact folder'
 - task: CopyFiles@2
   displayName: 'Copy distribution'
   inputs:
