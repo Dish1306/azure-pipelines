@@ -1,3 +1,7 @@
+parameters:
+  artifact: dist
+  github: ''
+
 stages:
 - stage: azure_linux_test
   displayName: 'test-aarch64'
