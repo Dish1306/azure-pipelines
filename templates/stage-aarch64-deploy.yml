@@ -43,6 +43,6 @@ stages:
       env:
         DOCKER_MULTIDICT_ROOT: "/home/multidict_root"
         HOST_USER_ID: $(id -u)
-    - template: templates/step-store-dist.yml@templates
+    - template: step-store-dist.yml@templates
       parameters:
         folder: wheelhouse
