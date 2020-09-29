@@ -26,11 +26,11 @@ stages:
       displayName: 'Registering qemu'
     - script: |
         set -xeo pipefail
-        docker run -v $(pwd):"${DOCKER_MULTIDICT_ROOT}":rw,z \
+        docker run -v $(pwd):"${DOCKER_ROOT_DIRECTORY}":rw,z \
                    -e HOST_USER_ID \
                    -e CODECOV_TOKEN \
                    "arm64v8/ubuntu:bionic" \
-                   bash -c "cd $DOCKER_MULTIDICT_ROOT;
+                   bash -c "cd $DOCKER_ROOT_DIRECTORY;
                    apt-get update -qq && apt-get install -qq $PYTHON python3-pip lib$PYTHON-dev git && \
                    $PYTHON -m pip install --upgrade pip setuptools wheel pytest-azurepipelines && \
                    $PYTHON setup.py install && \
@@ -43,7 +43,7 @@ stages:
       displayName: 'Running AArch64 build'
       env:
         CODECOV_TOKEN: $(codecov.token)
-        DOCKER_MULTIDICT_ROOT: "/home/multidict_root"
+        DOCKER_ROOT_DIRECTORY: "/home/source_root"
         HOST_USER_ID: $(id -u)
         PYTHON: "python$(python.version)"
   
