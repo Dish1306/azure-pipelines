@@ -32,8 +32,8 @@ stages:
                    "arm64v8/ubuntu:bionic" \
                    bash -c "cd $DOCKER_ROOT_DIRECTORY;
                    apt-get update -qq && apt-get install -qq $PYTHON python3-pip lib$PYTHON-dev git make && \
-                   make cythonize
                    $PYTHON -m pip install --upgrade pip setuptools wheel pytest-azurepipelines && \
+                   make cythonize && \
                    $PYTHON setup.py install && \
                    $PYTHON -m pip install -r requirements/pytest.txt && \
                    $PYTHON -m pytest tests -vv && \
