@@ -31,7 +31,8 @@ stages:
                    -e CODECOV_TOKEN \
                    "arm64v8/ubuntu:bionic" \
                    bash -c "cd $DOCKER_ROOT_DIRECTORY;
-                   apt-get update -qq && apt-get install -qq $PYTHON python3-pip lib$PYTHON-dev git && \
+                   apt-get update -qq && apt-get install -qq $PYTHON python3-pip lib$PYTHON-dev git make && \
+                   make cythonize
                    $PYTHON -m pip install --upgrade pip setuptools wheel pytest-azurepipelines && \
                    $PYTHON setup.py install && \
                    $PYTHON -m pip install -r requirements/pytest.txt && \
