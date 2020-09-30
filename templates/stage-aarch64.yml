@@ -31,11 +31,10 @@ stages:
                    -e CODECOV_TOKEN \
                    "arm64v8/ubuntu:bionic" \
                    bash -c "cd $DOCKER_ROOT_DIRECTORY;
-                   apt-get update -qq && apt-get install -qq $PYTHON python3-pip lib$PYTHON-dev git make && \
+                   apt-get update -qq && apt-get install -qq make $PYTHON python3-pip lib$PYTHON-dev git && \
                    $PYTHON -m pip install --upgrade pip setuptools wheel pytest-azurepipelines && \
                    make cythonize && \
-                   $PYTHON setup.py install && \
-                   $PYTHON -m pip install -r requirements/pytest.txt && \
+                   $PYTHON -m pip install -r requirements/test.txt && \
                    $PYTHON -m pytest tests -vv && \
                    $PYTHON -m coverage xml && \
                    if [ CODECOV_TOKEN != '' ]; then
