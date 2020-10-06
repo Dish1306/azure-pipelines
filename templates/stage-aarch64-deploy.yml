@@ -37,7 +37,7 @@ stages:
                    /opt/python/$(python.code)/bin/python -m venv .build-venv && \
                    source .build-venv/bin/activate && \
                    pip install -U setuptools wheel && \
-                   make cythonize && \
+                   parameters.step && \
                    python setup.py bdist_wheel && \
                    auditwheel repair dist/*.whl --wheel-dir wheelhouse/;"
       displayName: 'Running AArch64 wheel build'
