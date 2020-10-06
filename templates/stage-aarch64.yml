@@ -36,7 +36,7 @@ stages:
                    ${{ parameters.step }} && \
                    $PYTHON -m pip install -r requirements/test.txt && \
                    $PYTHON -m pytest tests -vv && \
-                   $PYTHON -m coverage xml && \
+                   $PYTHON -m coverage xml
                    if [ CODECOV_TOKEN != '' ]; then
                     $PYTHON -m pip install codecov && $PYTHON -m codecov -f coverage.xml -X gcov
                    fi;"
