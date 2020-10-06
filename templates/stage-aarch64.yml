@@ -33,7 +33,7 @@ stages:
                    bash -c "cd $DOCKER_ROOT_DIRECTORY;
                    apt-get update -qq && apt-get install -qq make $PYTHON python3-pip lib$PYTHON-dev git && \
                    $PYTHON -m pip install --upgrade pip setuptools wheel pytest-azurepipelines && \
-                   ${{ parameters.step }} && \
+                   ${{ parameters.step }}
                    $PYTHON -m pip install -r requirements/test.txt && \
                    $PYTHON -m pytest tests -vv && \
                    $PYTHON -m coverage xml
