@@ -33,9 +33,9 @@ stages:
                    bash -c "cd $DOCKER_ROOT_DIRECTORY;
                    apt-get update -qq && apt-get install -qq make $PYTHON python3-pip lib$PYTHON-dev git && \
                    $PYTHON -m pip install --upgrade pip setuptools wheel pytest-azurepipelines && \
-                   ${{ parameters.step }}
+                   ${{ parameters.steps }}
                    $PYTHON -m pytest tests -vv && \
-                   $PYTHON -m coverage xml
+                   $PYTHON -m coverage xml && \
                    if [ CODECOV_TOKEN != '' ]; then
                     $PYTHON -m pip install codecov && $PYTHON -m codecov -f coverage.xml -X gcov
                    fi;"
