@@ -2,17 +2,12 @@ parameters:
   steps: []
   python: '3.7'
 
-stages:
-- stage: DEPLOY-AARCH64
-  displayName: 'Deploy-aarch644'
-  jobs:
-  - job:
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - checkout: none
+steps:                            
+  - checkout: self
+    submodules: true
+    clean: true
     
-    - task: UsePythonVersion@0
+  - task: UsePythonVersion@0
       inputs:
         versionSpec: '3.7'
       displayName: "Use Python 3.7"
