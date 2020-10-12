@@ -5,7 +5,7 @@ parameters:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: ${{ parameters.python }}
+    versionSpec: '3.7'
     displayName: "Use Python 3.7"
       
 - script: docker run --rm --privileged hypriot/qemu-register
