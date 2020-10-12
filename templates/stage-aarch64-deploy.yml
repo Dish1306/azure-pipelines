@@ -1,14 +1,26 @@
 parameters:
   steps: []
-  
-steps:
- - checkout: self
-   submodules: true
-   clean: true
+  python: '3.7'
+
+stages:
+- stage: DEPLOY-AARCH64
+  displayName: 'Deploy-aarch644'
+  jobs:
+  - job:
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: none
+    
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.7'
+      displayName: "Use Python 3.7"
  
- - script: docker run --rm --privileged hypriot/qemu-register
+    - script: docker run --rm --privileged hypriot/qemu-register
       displayName: 'Registering qemu'
- - script: |
+ 
+    - script: |
         set -xeo pipefail
         docker run -v $(pwd):"${DOCKER_ROOT_DIRECTORY}":rw,z \
                    -e HOST_USER_ID \
