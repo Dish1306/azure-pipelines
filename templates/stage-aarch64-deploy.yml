@@ -1,12 +1,12 @@
-stages:
-- stage: azure_linux_deploy
-  displayName: 'deploy-aarch64'
-  steps:
-    - checkout: self
-      submodules: true
-      clean: true
-      
-    - script: docker run --rm --privileged hypriot/qemu-register
+parameters:
+  steps: []
+  
+steps:
+ - checkout: self
+   submodules: true
+   clean: true
+ 
+ - script: docker run --rm --privileged hypriot/qemu-register
       displayName: 'Registering qemu'
     - script: |
         set -xeo pipefail
@@ -27,3 +27,5 @@ stages:
     - template: step-store-dist.yml@templates
       parameters:
         folder: wheelhouse
+      
+    
